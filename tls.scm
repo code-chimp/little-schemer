@@ -2,14 +2,6 @@
   (lambda (x)
     (and (not (pair? x)) (not (null? x)))))
 
-(define add1
-  (lambda (x)
-    (+ x 1)))
-
-(define sub1
-  (lambda (x)
-    (- x 1)))
-
 (define lat?
   (lambda (l)
     (cond
@@ -18,13 +10,6 @@
       (else #f))))
 
 (define member?
-  (lambda (a lat)
-    (cond
-      ((null? lat) #f)
-      ((eq? a (car lat)) #t)
-      (else (member? a (cdr lat))))))
-
-(define member2?
   (lambda (a lat)
     (cond
       ((null? lat) #f)
@@ -73,3 +58,8 @@
        ((null? lat) '())
        ((or (eq? o1 (car lat)) (eq? o2 (car lat))) (cons new (cdr lat)))
        (else (cons (car lat) (subst new old (cdr lat)))))))
+
+; guile has it, mit doesn't
+(define 1-
+  (lambda (x)
+    (- x 1)))

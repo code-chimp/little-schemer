@@ -1,28 +1,10 @@
-(defun atom? (x)
-  (not (listp x)))
-
-(defun add1 (x)
-  (+ x 1))
-
-(defun sub1 (x)
-  (- x 1))
-
-(defun sqr (x)
-  (* x x))
-
 (defun lat? (l)
   (cond
     ((null l) t)
-    ((atom? (car l)) (lat? (cdr l)))
+    ((atom (car l)) (lat? (cdr l)))
     (t nil)))
 
 (defun member? (a lat)
-  (cond
-    ((null lat) nil)
-    ((eq a (car lat)) t)
-    (t (member? a (cdr lat)))))
-
-(defun member2? (a lat)
   (cond
     ((null lat) nil)
     (t (or (eq a (car lat))
