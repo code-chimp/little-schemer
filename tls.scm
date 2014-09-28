@@ -52,11 +52,13 @@
        ((eq? old (car lat)) (cons new (cdr lat)))
        (else (cons (car lat) (subst new old (cdr lat)))))))
 
+; end of LISPer, bonus practice
 (define subst2
   (lambda (new o1 o2 lat)
      (cond
        ((null? lat) '())
-       ((or (eq? o1 (car lat)) (eq? o2 (car lat))) (cons new (cdr lat)))
+       ((or (eq? o1 (car lat))
+            (eq? o2 (car lat))) (cons new (cdr lat)))
        (else (cons (car lat) (subst new old (cdr lat)))))))
 
 ; guile has it, mit doesn't

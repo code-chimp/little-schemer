@@ -41,6 +41,7 @@
     ((eq old (car lat)) (cons new lat))
     (t (cons (car lat) (insertL new old (cdr lat))))))
 
+; end of LISPer, bonus practice
 (defun subst (new old lat)
   (cond
     ((null lat) '())
@@ -50,5 +51,6 @@
 (defun subst2 (new o1 o2 lat)
   (cond
     ((null lat) '())
-    ((or (eq o1 (car lat)) (eq o2 (car lat))) (cons new (cdr lat)))
+    ((or (eq o1 (car lat))
+         (eq o2 (car lat))) (cons new (cdr lat)))
     (t (cons (car lat) (subst new old (cdr lat))))))
