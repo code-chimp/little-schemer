@@ -4,14 +4,6 @@
   (λ (x)
     (and (not (pair? x)) (not (null? x)))))
 
-(define add1
-  (λ (x)
-    (+ x 1)))
-
-(define sub1
-  (λ (x)
-    (- x 1)))
-
 (define lat?
   (λ (l)
     (cond
@@ -33,4 +25,11 @@
       (else (cond
               ((eq? a (car lat)) (cdr lat))
               (else (cons (car lat) (rember a (cdr lat)))))))))
-                       
+
+(define 1+
+  (λ (x)
+    (+ x 1)))
+
+(define 1-
+  (λ (x)
+    (- x 1)))
