@@ -13,14 +13,14 @@
   (lambda (a lat)
     (cond
       ((null? lat) #f)
-      (else (or (eq? a (car lat))
+      (else (or (eq? (car lat) a)
                 (member? a (cdr lat)))))))
 
 (define rember
   (lambda (a lat)
     (cond
       ((null? lat) '())
-      ((eq? a (car lat)) (cdr lat))
+      ((eq? (car lat) a) (cdr lat))
       (else (cons (car lat)
                   (rember a (cdr lat)))))))
 
@@ -35,31 +35,35 @@
   (lambda (new old lat)
      (cond
        ((null? lat) '())
-       ((eq? old (car lat)) (cons old (cons new (cdr lat))))
-       (else (cons (car lat) (insertR new old (cdr lat)))))))
+       ((eq? (car lat) old) (cons old (cons new (cdr lat))))
+       (else (cons (car lat)
+                   (insertR new old (cdr lat)))))))
 
 (define insertL
   (lambda (new old lat)
      (cond
        ((null? lat) '())
-       ((eq? old (car lat)) (cons new lat))
-       (else (cons (car lat) (insertL new old (cdr lat)))))))
+       ((eq? (car lat) old) (cons new lat))
+       (else (cons (car lat)
+                   (insertL new old (cdr lat)))))))
 
 (define subst
   (lambda (new old lat)
      (cond
        ((null? lat) '())
-       ((eq? old (car lat)) (cons new (cdr lat)))
-       (else (cons (car lat) (subst new old (cdr lat)))))))
+       ((eq? (car lat) old) (cons new (cdr lat)))
+       (else (cons (car lat)
+                   (subst new old (cdr lat)))))))
 
 ; end of LISPer, bonus practice
 (define subst2
   (lambda (new o1 o2 lat)
      (cond
        ((null? lat) '())
-       ((or (eq? o1 (car lat))
-            (eq? o2 (car lat))) (cons new (cdr lat)))
-       (else (cons (car lat) (subst new old (cdr lat)))))))
+       ((or (eq? (car lat) o1)
+            (eq? (car lat) o2)) (cons new (cdr lat)))
+       (else (cons (car lat)
+                   (subst new old (cdr lat)))))))
 
 ; guile has it, mit doesn't
 (define 1-
