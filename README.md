@@ -1,6 +1,6 @@
 # Goofing off
 
-Nothing to see here, just me taking a few of days to finally work my way through
+Nothing to see here, just me taking a few days to finally work my way through
 [The Little Schemer, 4th Edition](http://mitpress.mit.edu/books/little-schemer)...
 
 ...and [Land of Lisp](http://www.nostarch.com/lisp.htm) / [Realm of Racket](http://www.nostarch.com/realmofracket.htm)
