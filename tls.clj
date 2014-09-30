@@ -30,17 +30,35 @@
     :else (cons (first (first l))
                 (firsts (rest l)))))
 
-; insertR
 (defn insertR [n o lat]
   (cond
     (null? lat) '()
-    (= (first lat) n) (cons o (cons n (rest lat)))
-    :else (cons (first lat) (insertR n o (rest lat)))))
+    (= (first lat) o) (cons o (cons n (rest lat)))
+    :else (cons (first lat)
+                (insertR n o (rest lat)))))
 
-(defn abs [x]
+(defn insertL [n o lat]
   (cond
-    (< x 0) (* x -1)
-    :else x))
+    (null? lat) '()
+    (= (first lat) o) (cons n lat)
+    :else (cons (first lat)
+                (insertL n o (rest lat)))))
+
+(defn subst [n o lat]
+  (cond
+    (null? lat) '()
+    (= (first lat) o) (cons n (rest lat))
+    :else (cons (first lat)
+                (subst n o (rest lat)))))
+
+; end of LISPer, bonus practice
+(defn subst2 [n o1 o2 lat]
+  (cond
+    (null? lat) '()
+    (or (= (first lat) o1)
+        (= (first lat) o2)) (cons n (rest lat))
+    :else (cons (first lat)
+                (subst2 n o1 o2 (rest lat)))))
 
 (defn add1 [x]
   (+ x 1))
