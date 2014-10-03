@@ -60,6 +60,13 @@
     :else (cons (first lat)
                 (subst2 n o1 o2 (rest lat)))))
 
+(defn multirember [a lat]
+  (cond
+    (null? lat) '()
+    (= (first lat) a) (multirember a (rest lat))
+    :else (cons (first lat)
+                (multirember a (rest lat)))))
+
 (defn add1 [x]
   (+ x 1))
 

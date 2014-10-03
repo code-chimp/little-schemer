@@ -65,6 +65,14 @@
        (else (cons (car lat)
                    (subst new old (cdr lat)))))))
 
+(define multirember
+  (lambda (a lat)
+    (cond
+      ((null? lat) '())
+      ((eq? (car lat) a) (multirember a (cdr lat)))
+      (else (cons (car lat)
+                  (multirember a (cdr lat)))))))
+
 ; guile has it, mit doesn't
 (define 1-
   (lambda (x)

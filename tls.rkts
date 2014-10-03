@@ -65,6 +65,14 @@
        (else (cons (car lat)
                    (subst new old (cdr lat)))))))
 
+(define multirember
+  (λ (a lat)
+    (cond
+      ((null? lat) '())
+      ((eq? (car lat) a) (multirember a (cdr lat)))
+      (else (cons (car lat)
+            (multirember a (cdr lat)))))))
+
 (define 1+
   (λ (x)
     (+ x 1)))
