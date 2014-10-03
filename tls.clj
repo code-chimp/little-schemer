@@ -67,6 +67,22 @@
     :else (cons (first lat)
                 (multirember a (rest lat)))))
 
+(defn multiinsertR [n o lat]
+  (cond
+    (null? lat) '()
+    (= (first lat) o) (cons o (cons n
+                                    (multiinsertR n o (rest lat))))
+    :else (cons (first lat)
+                (multiinsertR n o (rest lat)))))
+
+(defn multisubst [n o lat]
+  (cond
+    (null? lat) '()
+    (= (first lat) o) (cons n
+                            (multisubst n o (rest lat)))
+    :else (cons (first lat)
+                (multisubst n o (rest lat)))))
+
 (defn add1 [x]
   (+ x 1))
 
