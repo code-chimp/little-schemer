@@ -93,3 +93,20 @@
   (cond
     ((zerop m) n)
     (t (minus (1- n) (1- m)))))
+
+(defun x (n m)
+  (cond
+    ((zerop m) m)
+    (t (+ n (x n (1- m))))))
+
+; this is clean though
+(defun addtup (tup)
+  (cond
+    ((null tup) 0)
+    (t (+ (car tup) (addtup (cdr tup))))))
+
+(defun tup+ (tup1 tup2)
+  (cond
+    ((and (null tup1) (null tup2)) '())
+    (t (cons (+ (car tup1) (car tup2))
+             (tup+ (cdr tup1) (cdr tup2))))))

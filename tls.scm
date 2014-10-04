@@ -110,3 +110,23 @@
     (cond
       ((zero? m) n)
       (else (minus (1- n) (1- m))))))
+
+(define x
+  (lambda (n m)
+    (cond
+      ((zero? m) m)
+      (else (+ n (x n (1- m)))))))
+
+; this is clean though
+(define addtup
+  (lambda (tup)
+    (cond
+      ((null? tup) 0)
+      (else (+ (car tup) (addtup (cdr tup)))))))
+
+(define tup+
+  (lambda (tup1 tup2)
+    (cond
+      ((and (null? tup1) (null? tup2)) '())
+      (else (cons (+ (car tup1) (car tup2))
+                  (tup+ (cdr tup1) (cdr tup2)))))))

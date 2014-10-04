@@ -100,3 +100,20 @@
     (cond
         (zero? m) n
         :else (minus (sub1 n) (sub1 m))))
+
+(defn x [n m]
+    (cond
+        (zero? m) m
+        :else (+ n (x n (sub1 m)))))
+
+; this is clean though
+(defn addtup [tup]
+    (cond
+        (null? tup) 0
+        :else (+ (first tup) (addtup (rest tup)))))
+
+(defn tup+ [tup1 tup2]
+    (cond
+        (and (null? tup1) (null? tup2)) '()
+        :else (cons (+ (first tup1) (first tup2))
+                    (tup+ (rest tup1) (rest tup2)))))
