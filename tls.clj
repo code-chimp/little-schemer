@@ -88,3 +88,15 @@
 
 (defn sub1 [x]
   (- x 1))
+
+; purely academic exercise as both of the following would
+; fail badly if m is negative
+(defn plus [n m]
+    (cond
+        (zero? m) n
+        :else (plus (add1 n) (sub1 m))))
+
+(defn minus [n m]
+    (cond
+        (zero? m) n
+        :else (minus (sub1 n) (sub1 m))))

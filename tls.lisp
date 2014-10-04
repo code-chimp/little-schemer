@@ -81,3 +81,15 @@
     ((eq (car lat) old) (cons new (multisubst new old (cdr lat))))
     (t (cons (car lat)
              (multisubst new old (cdr lat))))))
+
+; purely academic exercise as these will fail badly
+; if m is negative
+(defun plus (n m)
+  (cond
+    ((zerop m) n)
+    (t (plus (1+ n) (1- m)))))
+
+(defun minus (n m)
+  (cond
+    ((zerop m) n)
+    (t (minus (1- n) (1- m)))))

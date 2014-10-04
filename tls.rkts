@@ -98,3 +98,17 @@
 (define 1-
   (λ (x)
     (- x 1)))
+
+; purely academic exercise as negative m would be
+; infinite-loop bad
+(define plus
+  (λ (n m)
+     (cond
+       ((zero? m) n)
+       (else (plus (1+ n) (1- m))))))
+
+(define minus
+  (λ (n m)
+     (cond
+       ((zero? m) n)
+       (else (minus (1- n) (1- m))))))

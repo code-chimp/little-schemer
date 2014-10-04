@@ -96,3 +96,17 @@
 (define 1-
   (lambda (x)
     (- x 1)))
+
+; purely academic exercise as these will fail badly if
+; m is negative
+(define plus
+  (lambda (n m)
+    (cond
+      ((zero? m) n)
+      (else (plus (1+ n) (1- m))))))
+
+(define minus
+  (lambda (n m)
+    (cond
+      ((zero? m) n)
+      (else (minus (1- n) (1- m))))))
