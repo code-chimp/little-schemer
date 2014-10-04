@@ -117,6 +117,13 @@
       ((zero? m) m)
       (else (+ n (x n (1- m)))))))
 
+; mit-scheme don't cotton to digraphs
+(define myPow
+  (lambda (n m)
+    (cond
+      ((zero? m) 1)
+      (else (* n (myPow n (1- m)))))))
+
 ; this is clean though
 (define addtup
   (lambda (tup)

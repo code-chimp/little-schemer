@@ -119,6 +119,12 @@
        ((zero? m) m)
        (else (+ n (x n (1- m)))))))
 
+(define ↑
+  (λ (n m)
+     (cond
+       ((zero? m) 1)
+       (else (* n (↑ n (1- m)))))))
+
 ; this is clean though
 (define addtup
   (λ (tup)

@@ -99,6 +99,11 @@
     ((zerop m) m)
     (t (+ n (x n (1- m))))))
 
+(defun ↑ (n m)
+  (cond
+    ((zerop m) 1)
+    (t (* n (↑ n (1- m))))))
+
 ; this is clean though
 (defun addtup (tup)
   (cond

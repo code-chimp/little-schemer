@@ -89,7 +89,7 @@
 (defn sub1 [x]
   (- x 1))
 
-; purely academic exercise as both of the following would
+; purely academic exercise as the following would
 ; fail badly if m is negative
 (defn plus [n m]
     (cond
@@ -105,6 +105,11 @@
     (cond
         (zero? m) m
         :else (+ n (x n (sub1 m)))))
+
+(defn ↑ [n m]
+    (cond
+        (zero? m) 1
+        :else (* n (↑ n (sub1 m)))))
 
 ; this is clean though
 (defn addtup [tup]
