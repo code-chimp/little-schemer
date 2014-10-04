@@ -43,12 +43,13 @@
     (t (cons (car lat)
              (insertL new old (cdr lat))))))
 
-(defun subst (new old lat)
+; make sbcl happy
+(defun mySubst (new old lat)
   (cond
     ((null lat) '())
     ((eq (car lat) old) (cons new (cdr lat)))
     (t (cons (car lat)
-             (subst new old (cdr lat))))))
+             (mySubst new old (cdr lat))))))
 
 ; end of LISPer, bonus practice
 (defun subst2 (new o1 o2 lat)
@@ -57,7 +58,7 @@
     ((or (eq (car lat) o1)
          (eq (car lat) o2)) (cons new (cdr lat)))
     (t (cons (car lat)
-             (subst new old (cdr lat))))))
+             (subst2 new o1 o2 (cdr lat))))))
 
 (defun multirember (a lat)
   (cond
@@ -121,3 +122,14 @@
   (cond
     ((< n m) 0)
     (t (1+ (myDiv (- n m) m)))))
+
+(defun len (lat)
+  (cond
+    ((null lat) 0)
+    (t (1+ (len (cdr lat))))))
+
+(defun pick (n lat)
+  (cond
+    ((null lat) '())
+    ((zerop (1- n)) (car lat))
+    (t (pick (1- n) (cdr lat)))))

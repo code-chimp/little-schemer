@@ -144,3 +144,16 @@
     (cond
       ((< n m) 0)
       (else (1+ (myDiv (- n m) m))))))
+
+(define len
+  (lambda (lat)
+    (cond
+      ((null? lat) 0)
+      (else (1+ (len (cdr lat)))))))
+
+(define pick
+  (lambda (n lat)
+    (cond
+      ((null? lat) '())
+      ((zero? (1- n)) (car lat))
+      (else (pick (1- n) (cdr lat))))))

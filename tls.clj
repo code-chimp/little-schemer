@@ -128,3 +128,14 @@
     (cond
         (< n m) 0
         :else (add1 (myDiv (- n m) m))))
+
+(defn length [lat]
+    (cond
+        (null? lat) 0
+        :else (add1 (length (rest lat)))))
+
+(defn pick [n lat]
+    (cond
+        (null? lat) nil
+        (zero? (sub1 n)) (first lat)
+        :else (pick (sub1 n) (rest lat))))
