@@ -133,3 +133,31 @@
     ((null lat) '())
     ((zerop (1- n)) (car lat))
     (t (pick (1- n) (cdr lat)))))
+
+(defun rempick (n lat)
+  (cond
+    ((null lat) '())
+    ((= n 1) (cdr lat))
+    (t (cons (car lat)
+             (rempick (1- n) (cdr lat))))))
+
+(defun no-nums (lat)
+  (cond
+    ((null lat) '())
+    ((numberp (car lat)) (no-nums (cdr lat)))
+    (t (cons (car lat)
+             (no-nums (cdr lat))))))
+
+(defun all-nums (lat)
+  (cond
+    ((null lat) '())
+    ((not (numberp (car lat))) (all-nums (cdr lat)))
+    (t (cons (car lat)
+             (all-nums (cdr lat))))))
+
+(defun occur (a lat)
+  (cond
+    ((null lat) 0)
+    ((eq? (car lat) a) (1+ (occur a (cdr lat))))
+    (t (occur a (cdr lat)))))
+

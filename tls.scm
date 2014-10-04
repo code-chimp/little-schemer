@@ -157,3 +157,35 @@
       ((null? lat) '())
       ((zero? (1- n)) (car lat))
       (else (pick (1- n) (cdr lat))))))
+
+(define rempick
+  (lambda (n lat)
+    (cond
+      ((null? lat) '())
+      ((= n 1) (cdr lat))
+      (else (cons (car lat)
+                  (rempick (1- n) (cdr lat)))))))
+
+(define no-nums
+  (lambda (lat)
+    (cond
+      ((null? lat) '())
+      ((number? (car lat)) (no-nums (cdr lat)))
+      (else (cons (car lat)
+                  (no-nums (cdr lat)))))))
+
+(define all-nums
+  (lambda (lat)
+    (cond
+      ((null? lat) '())
+      ((not (number? (car lat))) (all-nums (cdr lat)))
+      (else (cons (car lat)
+                  (all-nums (cdr lat)))))))
+
+(define occur
+  (lambda (a lat)
+    (cond
+      ((null? lat) 0)
+      ((eq? (car lat) a) (1+ (occur a (cdr lat))))
+      (else (occur a (cdr lat))))))
+

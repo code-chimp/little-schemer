@@ -139,3 +139,31 @@
         (null? lat) nil
         (zero? (sub1 n)) (first lat)
         :else (pick (sub1 n) (rest lat))))
+
+(defn rempick [n lat]
+    (cond
+        (null? lat) nil
+        (= n 1) (rest lat)
+        :else (cons (first lat)
+                    (rempick (sub1 n) (rest lat)))))
+
+(defn no-nums [lat]
+    (cond
+        (null? lat) '()
+        (number? (first lat)) (no-nums (rest lat))
+        :else (cons (first lat)
+                    (no-nums (rest lat)))))
+
+(defn all-nums [lat]
+    (cond
+        (null? lat) '()
+        (not (number? (first lat))) (all-nums (rest lat))
+        :else (cons (first lat)
+                    (all-nums (rest lat)))))
+
+(defn occur [a lat]
+    (cond
+        (null? lat) 0
+        (= (first lat) a) (add1 (occur a (rest lat)))
+        :else (occur a (rest lat))))
+
