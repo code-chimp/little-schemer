@@ -2,7 +2,7 @@
   (not (seq? a)))
 
 (defn null? [a]
-  (or (= '() a)
+  (or (= [] a)
       (nil? a)))
 
 (defn lat? [l]
@@ -19,34 +19,34 @@
 
 (defn rember [a lat]
   (cond
-    (null? lat) '()
+    (null? lat) []
     (= (first lat) a) (rest lat)
     :else (cons (first lat)
                 (rember a (rest lat)))))
 
 (defn firsts [l]
   (cond
-    (null? l) '()
+    (null? l) []
     :else (cons (first (first l))
                 (firsts (rest l)))))
 
 (defn insertR [n o lat]
   (cond
-    (null? lat) '()
+    (null? lat) []
     (= (first lat) o) (cons o (cons n (rest lat)))
     :else (cons (first lat)
                 (insertR n o (rest lat)))))
 
 (defn insertL [n o lat]
   (cond
-    (null? lat) '()
+    (null? lat) []
     (= (first lat) o) (cons n lat)
     :else (cons (first lat)
                 (insertL n o (rest lat)))))
 
 (defn subst [n o lat]
   (cond
-    (null? lat) '()
+    (null? lat) []
     (= (first lat) o) (cons n (rest lat))
     :else (cons (first lat)
                 (subst n o (rest lat)))))
@@ -54,7 +54,7 @@
 ; end of LISPer, bonus practice
 (defn subst2 [n o1 o2 lat]
   (cond
-    (null? lat) '()
+    (null? lat) []
     (or (= (first lat) o1)
         (= (first lat) o2)) (cons n (rest lat))
     :else (cons (first lat)
@@ -62,14 +62,14 @@
 
 (defn multirember [a lat]
   (cond
-    (null? lat) '()
+    (null? lat) []
     (= (first lat) a) (multirember a (rest lat))
     :else (cons (first lat)
                 (multirember a (rest lat)))))
 
 (defn multiinsertR [n o lat]
   (cond
-    (null? lat) '()
+    (null? lat) []
     (= (first lat) o) (cons o (cons n
                                     (multiinsertR n o (rest lat))))
     :else (cons (first lat)
@@ -77,7 +77,7 @@
 
 (defn multisubst [n o lat]
   (cond
-    (null? lat) '()
+    (null? lat) []
     (= (first lat) o) (cons n
                             (multisubst n o (rest lat)))
     :else (cons (first lat)
@@ -149,14 +149,14 @@
 
 (defn no-nums [lat]
     (cond
-        (null? lat) '()
+        (null? lat) []
         (number? (first lat)) (no-nums (rest lat))
         :else (cons (first lat)
                     (no-nums (rest lat)))))
 
 (defn all-nums [lat]
     (cond
-        (null? lat) '()
+        (null? lat) []
         (not (number? (first lat))) (all-nums (rest lat))
         :else (cons (first lat)
                     (all-nums (rest lat)))))
