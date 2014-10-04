@@ -116,3 +116,8 @@
     ((null tup2) tup1)
     (t (cons (+ (car tup1) (car tup2))
              (tup+ (cdr tup1) (cdr tup2))))))
+
+(defun myDiv (n m)
+  (cond
+    ((< n m) 0)
+    (t (1+ (myDiv (- n m) m)))))

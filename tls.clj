@@ -123,3 +123,8 @@
         (null? tup2) tup1
         :else (cons (+ (first tup1) (first tup2))
                     (tup+ (rest tup1) (rest tup2)))))
+
+(defn myDiv [n m]
+    (cond
+        (< n m) 0
+        :else (add1 (myDiv (- n m) m))))
