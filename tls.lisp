@@ -158,6 +158,6 @@
 (defun occur (a lat)
   (cond
     ((null lat) 0)
-    ((eq? (car lat) a) (1+ (occur a (cdr lat))))
+    ((eq (car lat) a) (1+ (occur a (cdr lat))))
     (t (occur a (cdr lat)))))
 
