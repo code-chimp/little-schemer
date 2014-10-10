@@ -161,3 +161,14 @@
     ((eq (car lat) a) (1+ (occur a (cdr lat))))
     (t (occur a (cdr lat)))))
 
+(defun rember* (a l)
+  (cond
+    ((null l) '())
+    ((atom (car l))
+     (cond
+       ((eq (car l) a) (rember* a (cdr l)))
+       (t (cons (car l)
+                (rember* a (cdr l))))))
+     (t (cons (rember* a (car l))
+                 (rember* a (cdr l))))))
+
